@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -8,18 +8,23 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
 
+ 
   public loginForm!: FormGroup
+
 
   constructor(private formbuilder: FormBuilder,private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
+
+    
     this.loginForm = this.formbuilder.group({
-      email: ["",Validators.required],
+      email: ["",Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")],
       password: ["", Validators.required]
     })
   }
+
   login(){
     this.http.get<any>("http://localhost:3000/users")
     .subscribe(res=>{

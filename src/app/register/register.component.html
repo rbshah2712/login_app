@@ -19,15 +19,16 @@
       </p>
   
       <label>Year of Birth</label>
-      <input type="text"  formControlName="birthyear" required/>
+      <select formControlName="birthyear">
+        <option *ngFor="let year of years" [value]="year">{{ year }}</option> 
+      </select>
       <p class="error">
         <span>Some text here</span>
       </p>
   
       <label>Country</label>
       <select formControlName="country">
-        <option>Country 1</option>
-        <option>Country 2</option>
+        <option *ngFor="let country of countries" [ngValue]="country">{{country.name}}</option>
       </select>  
   
       <div class="register_button">
