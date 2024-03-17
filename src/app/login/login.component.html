@@ -1,14 +1,14 @@
 <div class="registration">
-  <h1>Hi Welcome Back</h1>
+  <h1>Hi Welcome</h1>
    <h3>Login Here</h3>
     <form [formGroup]="loginForm" (ngSubmit)="login()">
         <label for="email">Email Address</label>
-        <input  formControlName="email" required  type="text">
+        <input  type="text" formControlName="email" required>
         <p *ngIf="loginForm.controls['email'].invalid && (loginForm.controls['email'].dirty || loginForm.controls['email'].touched)" class="error">
           <span>Enter email</span>
         </p>
         <label for="password">Password</label>
-        <input  formControlName="password" required type="password">
+        <input  type="password"  formControlName="password" required>
         <p *ngIf="loginForm.controls['email'].invalid && (loginForm.controls['email'].dirty || loginForm.controls['email'].touched)" class="error">
           <span>Enter Password</span>
         </p>

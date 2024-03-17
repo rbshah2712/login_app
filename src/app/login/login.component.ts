@@ -14,13 +14,17 @@ export class LoginComponent implements OnInit{
   public loginForm!: FormGroup
 
 
-  constructor(private formbuilder: FormBuilder,private http: HttpClient, private router: Router) { }
+  constructor(private formbuilder: FormBuilder,private http: HttpClient, private router: Router) { 
+
+    
+  }
 
   ngOnInit(): void {
 
-    
+   
+
     this.loginForm = this.formbuilder.group({
-      email: ["",Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")],
+      email: ["",[Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
       password: ["", Validators.required]
     })
   }

@@ -11,9 +11,9 @@ import { Countries } from '../models/countries';
 })
 export class RegisterComponent {
 
-  countries : Countries[] | undefined;
+  countries : Countries[];
   selectedValue = '';
-  selectedYear: number | undefined;
+  selectedYear: number;
   years: number[] = [];  
   
   public signUpForm !: FormGroup;
