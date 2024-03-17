@@ -13,7 +13,7 @@
           <span>Enter Password</span>
         </p>
         <div>
-          <button class="register_button">Submit</button>
+          <button class="register_button" [disabled]="!loginForm.valid">Submit</button>
         </div><br/><br/>
       <span>Don't have an account? 
       <a routerLink="/register">signUp</a></span><br/>

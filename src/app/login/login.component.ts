@@ -8,28 +8,25 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit{
-
- 
+export class LoginComponent{
   public loginForm!: FormGroup
-
-
+ 
   constructor(private formbuilder: FormBuilder,private http: HttpClient, private router: Router) { 
 
     
   }
 
   ngOnInit(): void {
-
-   
-
     this.loginForm = this.formbuilder.group({
-      email: ["",[Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
-      password: ["", Validators.required]
+      email: [null,[Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
+      password: [null, Validators.required]
     })
+  
+    
   }
 
   login(){
+    
     this.http.get<any>("http://localhost:3000/users")
     .subscribe(res=>{
       const user = res.find((a:any)=>{

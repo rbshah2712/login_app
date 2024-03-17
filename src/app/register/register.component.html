@@ -2,7 +2,7 @@
     <form [formGroup] = "signUpForm" (ngSubmit)="signUp()">
       <label>Your email</label>
       <input type="text" formControlName="email" required/>
-      <p class="error">
+      <p *ngIf="signUpForm.controls['email'].invalid && (signUpForm.controls['email'].dirty || signUpForm.controls['email'].touched)" class="error">
         <span>This email exists already in the database</span>
       </p>
   

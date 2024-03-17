@@ -7,7 +7,7 @@ import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   {path:'',component:LoginComponent,pathMatch:"full"},
-  {path:'login',component:LoginComponent,pathMatch:"full"},
+  {path:'login',component:LoginComponent},
   {path:'register',component:RegisterComponent},
   {path:'forgotpass',component:ForgotpassComponent},
   {path:'home',component:HomeComponent},
