@@ -1,31 +1,31 @@
 <div class="registration">
-    <form>
+    <form [formGroup] = "signUpForm" (ngSubmit)="signUp()">
       <label>Your email</label>
-      <input type="text" />
+      <input type="text" formControlName="email" required/>
       <p class="error">
         <span>This email exists already in the database</span>
       </p>
   
       <label>Password</label>
-      <input type="text" />
+      <input type="text"  formControlName="password" required/>
       <p class="error">
         <span>At least 8 characters</span>
       </p>
   
       <label>Password [repeat]</label>
-      <input type="text" />
+      <input type="text"  formControlName="repeatpassword" required/>
       <p class="error">
         <span>Some text here</span>
       </p>
   
       <label>Year of Birth</label>
-      <input type="text" />
+      <input type="text"  formControlName="birthyear" required/>
       <p class="error">
         <span>Some text here</span>
       </p>
   
       <label>Country</label>
-      <select name="country">
+      <select formControlName="country">
         <option>Country 1</option>
         <option>Country 2</option>
       </select>  

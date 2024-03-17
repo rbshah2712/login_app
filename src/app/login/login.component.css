@@ -1,12 +1,12 @@
 .registration form {
-    width: 220px;
-    height:330px;
+    width: 300px;
+    height:530px;
     background-color: black;
     padding: 10px 0px 0px 4px;
     border-radius: 15px;
     color: white;
     text-transform: uppercase;
-    font-size: 11px;
+    font-size: 15px;
     font-weight: bold;
     font-family: "Century Gothic";
   }
@@ -25,6 +25,10 @@
   
   .registration form label {
     margin: 5px 0px 0px 15px;
+  }
+  .registration span{
+    padding:10px 10px;
+    font-size:15px;
   }
   
   a {

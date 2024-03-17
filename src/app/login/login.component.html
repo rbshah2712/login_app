@@ -1,21 +1,23 @@
 <div class="registration">
-    <form>
-      <label>Your email</label>
-      <input type="text" />
-      <p class="error">
-        <span>This email exists already in the database</span>
-      </p>
-  
-      <label>Password</label>
-      <input type="text" />
-      <p class="error">
-        <span>At least 8 characters</span>
-      </p>
-  
-      <div class="register_button">
-        <span><a href="#">Login</a></span>
-      </div>
+  <h1>Hi Welcome Back</h1>
+   <h3>Login Here</h3>
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <label for="email">Email Address</label>
+        <input  formControlName="email" required  type="text">
+        <p *ngIf="loginForm.controls['email'].invalid && (loginForm.controls['email'].dirty || loginForm.controls['email'].touched)" class="error">
+          <span>Enter email</span>
+        </p>
+        <label for="password">Password</label>
+        <input  formControlName="password" required type="password">
+        <p *ngIf="loginForm.controls['email'].invalid && (loginForm.controls['email'].dirty || loginForm.controls['email'].touched)" class="error">
+          <span>Enter Password</span>
+        </p>
+        <div>
+          <button class="register_button">Submit</button>
+        </div><br/><br/>
+      <span>Don't have an account? 
+      <a routerLink="/register">signUp</a></span><br/>
+      <span>Forget Password?
+        <a routerLink="/forgotpass">forget pass</a></span>
     </form>
-    <span><a routerLink="register">Register</a></span>
-    <span><a routerLink="forgetpass">Forget Password?</a></span>
-  </div>
+</div>
