@@ -29,10 +29,8 @@
       <label>Country</label>
       <select formControlName="country">
         <option *ngFor="let country of countries" [ngValue]="country">{{country.name}}</option>
-      </select>  
-  
-      <div class="register_button">
-        <span><a href="#">REGISTER</a></span>
-      </div>
+      </select> 
+        <button class="register_button" [disabled]="!signUpForm.valid">Submit</button>
+     
     </form>
   </div>

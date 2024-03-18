@@ -18,7 +18,7 @@ export class LoginComponent{
 
   ngOnInit(): void {
     this.loginForm = this.formbuilder.group({
-      email: [null,[Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
+      email1: [null,[Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
       password: [null, Validators.required]
     })
   
@@ -30,7 +30,7 @@ export class LoginComponent{
     this.http.get<any>("http://localhost:3000/users")
     .subscribe(res=>{
       const user = res.find((a:any)=>{
-        return a.email === this.loginForm.value.email && a.password === this.loginForm.value.password 
+        return a.email1 === this.loginForm.value.email1 && a.password === this.loginForm.value.password 
       });
       if(user){
         alert('Login Succesful');

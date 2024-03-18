@@ -3,13 +3,13 @@
    <h3>Login Here</h3>
     <form [formGroup]="loginForm" (ngSubmit)="login()">
         <label for="email">Email Address</label>
-        <input  type="text" formControlName="email" required>
-        <p *ngIf="loginForm.controls['email'].invalid && (loginForm.controls['email'].dirty || loginForm.controls['email'].touched)" class="error">
+        <input  type="text" formControlName="email1" required>
+        <p *ngIf="loginForm.controls['email1'].invalid && (loginForm.controls['email1'].dirty || loginForm.controls['email1'].touched)" class="error">
           <span>Enter email</span>
         </p>
         <label for="password">Password</label>
         <input  type="password"  formControlName="password" required>
-        <p *ngIf="loginForm.controls['email'].invalid && (loginForm.controls['email'].dirty || loginForm.controls['email'].touched)" class="error">
+        <p *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)" class="error">
           <span>Enter Password</span>
         </p>
         <div>
