@@ -18,7 +18,7 @@ export class AuthGuard {
   ): Observable<boolean> | Promise<boolean> | UrlTree | boolean {
     if (this.authService.isLoggedIn() !== true) {
       window.alert('Access Denied, Login is Required to Access This Page!');
-      this.router.navigate(['register']);
+      this.router.navigate(['login']);
     }
     return true;
   }
