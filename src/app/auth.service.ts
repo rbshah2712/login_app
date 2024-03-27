@@ -16,4 +16,14 @@ export class AuthService {
       return true;
     }
   }
+
+  isLoggedOut():boolean {
+
+    const token = localStorage.getItem('token'); // get token from local storage
+    if (token == null) {
+      return false;
+    } else {
+      localStorage.removeItem('token');
+    }
+  }
 }
