@@ -9,6 +9,7 @@ import { ForgotpassComponent } from './forgotpass/forgotpass.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { PostsComponent } from './posts/posts.component';
+import { NgOptimizedImage } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { PostsComponent } from './posts/posts.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgOptimizedImage
   ],
   providers: [],
   bootstrap: [AppComponent]
