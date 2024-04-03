@@ -34,9 +34,9 @@ export class RegisterComponent {
     });
 
     this.signUpForm = this.formBuilder.group({
-      email: [null,[Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
-      password: [null, Validators.required],
-      repeatpassword:[null, Validators.required],
+      email: [null,Validators.compose([Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")])],
+      password: [null, Validators.compose([Validators.required,Validators.minLength(8)])],
+      repeatpassword:[null, Validators.compose([Validators.required,Validators.minLength(8)])],
       birthyear: [null],
       country: [null, Validators.required]
     })

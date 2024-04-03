@@ -3,20 +3,24 @@
       <label>Your email</label>
       <input type="text" formControlName="email" required/>
       <p *ngIf="signUpForm.controls['email'].invalid && (signUpForm.controls['email'].dirty || signUpForm.controls['email'].touched)" class="error">
-        <span>This email exists already in the database</span>
+        <span>Enter email</span>
       </p>
   
       <label>Password</label>
-      <input type="text"  formControlName="password" required/>
-      <p class="error">
-        <span>At least 8 characters</span>
+      <input type="password"  formControlName="password" required/>
+      <p *ngIf="signUpForm.controls['password'].invalid && (signUpForm.controls['password'].dirty || signUpForm.controls['password'].touched)" class="error">
+        <span *ngIf="signUpForm.get('password').hasError('required')" class="error">Enter password</span>
+        <span *ngIf="signUpForm.get('password').hasError('minLength')" class="error">Enter password atleast 8 characters in length</span>
       </p>
   
       <label>Password [repeat]</label>
-      <input type="text"  formControlName="repeatpassword" required/>
-      <p class="error">
-        <span>Some text here</span>
+      <input type="password"  formControlName="repeatpassword" required/>
+      <p *ngIf="signUpForm.controls['repeatpassword'].invalid && (signUpForm.controls['repeatpassword'].dirty || signUpForm.controls['repeatpassword'].touched)" class="error">
+        <span *ngIf="signUpForm.get('password').hasError('required')" class="error">Enter password</span>
       </p>
+      <div *ngIf="signUpForm.controls['repeatpassword'].errors['minLength']" class="error">
+        Password must be atleast 8 characters in length
+      </div>
   
       <label>Year of Birth</label>
       <select formControlName="birthyear">
