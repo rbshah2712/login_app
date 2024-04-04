@@ -1,13 +1,13 @@
 <div class="registration">
     <form [formGroup] = "signUpForm" (ngSubmit)="signUp()">
       <label>Your email</label>
-      <input type="text" formControlName="email" required/>
+      <input type="text" formControlName="email"/>
       <p *ngIf="signUpForm.controls['email'].invalid && (signUpForm.controls['email'].dirty || signUpForm.controls['email'].touched)" class="error">
         <span>Enter email</span>
       </p>
   
       <label>Password</label>
-      <input type="password"  formControlName="password" required/>
+      <input type="password"  formControlName="password"/>
       <p *ngIf="signUpForm.controls['password'].invalid && (signUpForm.controls['password'].dirty || signUpForm.controls['password'].touched)" class="error">
         <span *ngIf="signUpForm.get('password').hasError('required')" class="error">Enter password</span>
         <span *ngIf="signUpForm.get('password').hasError('minLength')" class="error">Enter password atleast 8 characters in length</span>
@@ -16,24 +16,25 @@
       <label>Password [repeat]</label>
       <input type="password"  formControlName="repeatpassword" required/>
       <p *ngIf="signUpForm.controls['repeatpassword'].invalid && (signUpForm.controls['repeatpassword'].dirty || signUpForm.controls['repeatpassword'].touched)" class="error">
-        <span *ngIf="signUpForm.get('password').hasError('required')" class="error">Enter password</span>
+        <span *ngIf="signUpForm.get('repeatpassword').hasError('required')" class="error">Enter password</span>
+        <span *ngIf="signUpForm.get('repeatpassword').hasError('minLength')" class="error">Enter password atleast 8 characters in length</span>
+        <span *ngIf="signUpForm.errors?.error" class="error">{{signUpForm.errors?.error}}</span>
       </p>
-      <div *ngIf="signUpForm.controls['repeatpassword'].errors['minLength']" class="error">
-        Password must be atleast 8 characters in length
-      </div>
-  
+     
       <label>Year of Birth</label>
       <select formControlName="birthyear">
         <option *ngFor="let year of years" [value]="year">{{ year }}</option> 
       </select>
-      <p class="error">
-        <span>Some text here</span>
+      <p *ngIf="signUpForm.controls['birthyear'].invalid && (signUpForm.controls['birthyear'].dirty || signUpForm.controls['birthyear'].touched)" class="error">
+      <span *ngIf="signUpForm.get('birthyear').hasError('required')" class="error">Select Year</span>
       </p>
-  
       <label>Country</label>
       <select formControlName="country">
         <option *ngFor="let country of countries" [ngValue]="country">{{country.name}}</option>
       </select> 
+      <p *ngIf="signUpForm.controls['country'].invalid && (signUpForm.controls['country'].dirty || signUpForm.controls['country'].touched)" class="error">
+        <span *ngIf="signUpForm.get('country').hasError('required')" class="error">Select Country</span>
+        </p>
         <button class="register_button" [disabled]="!signUpForm.valid">Submit</button>
      
     </form>

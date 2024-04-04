@@ -43,6 +43,18 @@
         "code": "AL",
         "id": "ce00"
       }
+    },
+    {
+      "id": "8e43",
+      "email": "atchuthreddy.konkala@thomsonreuters.com",
+      "password": "12345678",
+      "repeatpassword": "12345678",
+      "birthyear": "2021",
+      "country": {
+        "name": "American Samoa",
+        "code": "AS",
+        "id": "d8e1"
+      }
     }
   ],
   "posts": [

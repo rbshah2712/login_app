@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Countries } from '../models/countries';
+
 
 @Component({
   selector: 'app-register',
@@ -25,6 +26,7 @@ export class RegisterComponent {
     }
   }
 
+ 
   ngOnInit(): void {
 
     this.http.get<any>("http://localhost:3000/countries")
@@ -36,11 +38,16 @@ export class RegisterComponent {
     this.signUpForm = this.formBuilder.group({
       email: [null,Validators.compose([Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")])],
       password: [null, Validators.compose([Validators.required,Validators.minLength(8)])],
-      repeatpassword:[null, Validators.compose([Validators.required,Validators.minLength(8)])],
-      birthyear: [null],
-      country: [null, Validators.required]
+      repeatpassword:[null, Validators.compose([Validators.required,Validators.minLength(8)])], 
+      birthyear: [null,Validators.compose([Validators.required])],
+      country: [null, Validators.compose([Validators.required])]
     })
+    this.signUpForm.addValidators(
+      this.matchValidator(this.signUpForm.get('password'), this.signUpForm.get('repeatpassword'))
+    );
   }
+
+  
 
   signUp(){
     this.http.post<any>("http://localhost:3000/users",this.signUpForm.value)
@@ -52,4 +59,12 @@ export class RegisterComponent {
       alert("Something went wrong")
     })
   }
+
+  matchValidator(controlName: AbstractControl, matchingControlName: AbstractControl): ValidatorFn {
+    return () => {
+      if (controlName.value !== matchingControlName.value)
+        return { error: "password doesn't match" };
+      return null;
+    };
+}
 }
